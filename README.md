@@ -8,6 +8,10 @@
 ```sh
  cd frontend
  npm install
+ 
+ npm start
+ or
+ npm install -g @angular/cli
  ng serve --open
 ```
 
