@@ -1,6 +1,17 @@
 # Monorepositório
 
-# Frontend
-  Node v14+
-  Angular v12+
+## Frontend
+  Node v14+<br>
+  Npm v6.14<br>
+  Angular v12+<br>
   
+```sh
+ npm install
+ ng serve --open
+```
+
+## Backend
+  Java v11<br>
+  Spring boot v2.5.5<br>
+  
+  Run class backendApplication 
