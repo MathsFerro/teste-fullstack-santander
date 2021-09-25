@@ -4,6 +4,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,9 +17,13 @@ public class Address {
 
     private Long number;
     private Long cep;
+    @NotBlank
     private String logradouro;
+    @NotBlank
     private String district;
+    @NotBlank
     private String city;
+    @NotBlank
     private String state;
 
     @OneToOne(mappedBy = "address")

@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: "collaborator",
     component: CollaboratorsFormComponent
+  },
+  {
+    path: "collaborator/:id",
+    component: CollaboratorsFormComponent
   }
 ];
 

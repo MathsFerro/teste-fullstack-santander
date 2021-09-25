@@ -5,6 +5,7 @@
     <input  
       type="text" 
       class="form-control mt-4"
+      placeholder="Buscar por nome"
       [(ngModel)]="filterName"
     >
     <button class="mt-4 btn btn-primary " (click)="findCollaboratorByName()">Buscar</button>
@@ -33,7 +34,10 @@
       <td>{{collaborator.birthDate}}</td>
       <td>{{collaborator.address.logradouro}}, {{collaborator.address.number}}</td>
       <td>
-        <button class="btn btn-danger" (click)="prepareToDelete(collaborator)" data-toggle="modal" data-target="#modalDelete">
+        <button class="btn btn-primary" routerLink="/collaborator/{{collaborator.id}}">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-danger ml-1" (click)="prepareToDelete(collaborator)" data-toggle="modal" data-target="#modalDelete">
           <i class="fa fa-times" aria-hidden="true"></i>
         </button>
       </td>

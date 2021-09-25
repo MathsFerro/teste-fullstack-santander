@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,16 @@ export class CollaboratorsService {
     return this.http.get<CollaboratorData>(this.devUrl+"/by-name", { params });
   }
 
-  edit(id: number): Observable<Collaborator> {
-    return this.http.get<Collaborator>(this.devUrl+`/${id}`);
+  edit(collaborator: Collaborator): Observable<Collaborator> {
+    const id = collaborator.id;
+    return this.http.put<Collaborator>(this.devUrl+`/${id}`, {
+      id,
+      name: collaborator.name,
+      lastName: collaborator.lastName,
+      role: collaborator.role,
+      birthDate: moment(collaborator.birthDate, "YYYY-MM-DD", true).format("DD/MM/YYYY"),
+      address: collaborator.address
+    } as Collaborator);
   }
 
   findById(id: number): Observable<Collaborator> {
@@ -49,16 +58,16 @@ export class CollaboratorsService {
   }
 }
 
-export class Collaborator {
+export interface Collaborator {
   id: number;
   name: string;
   lastName: string;
   birthDate: string;
   role: string;
-  address: Address = new Address();
+  address: Address;
 }
 
-export class Address {
+export interface Address {
   number: number;
   cep: number;
   logradouro: string;

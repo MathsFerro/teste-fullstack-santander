@@ -1,0 +1,2 @@
+INSERT INTO tb_address (cep, city, created_at, district, logradouro, number, state, updated_at) VALUES (03160030, 'São Paulo', current_timestamp, 'Vila Prudente', 'Rua Fernão Marques', 93, 'SP',current_timestamp );
+INSERT INTO tb_collaborators(birth_date, created_at, last_name, name, role, updated_at, address_id) VALUES ('1999-04-12', current_timestamp, 'Ferro', 'Matheus', 'Dev FullStack JR.', current_timestamp, 1);
