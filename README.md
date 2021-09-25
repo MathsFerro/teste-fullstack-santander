@@ -6,6 +6,7 @@
   Angular v12+<br>
   
 ```sh
+ cd frontend
  npm install
  ng serve --open
 ```
