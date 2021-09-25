@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/collaborator")
 @CrossOrigin("http://localhost:4200")
 public class CollaboratorController {
 
@@ -23,34 +23,40 @@ public class CollaboratorController {
     @Autowired
     private AddressService addressService;
 
-    @PostMapping(value = "/collaborator")
+    @PostMapping
     public ResponseEntity<CollaboratorDTO> add(@RequestBody @Valid Collaborator collaborator) {
         addressService.add(collaborator.getAddress());
         CollaboratorDTO result = collaboratorService.add(collaborator);
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/collaborator/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<CollaboratorDTO> edit(@PathVariable("id") Long id, @RequestBody @Valid Collaborator collaboratorUpdated) {
         CollaboratorDTO result = collaboratorService.edit(id, collaboratorUpdated);
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping(value = "/collaborator/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<CollaboratorDTO> findById(@PathVariable("id") Long id) {
         CollaboratorDTO result = collaboratorService.findById(id);
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping(value = "/collaborators")
+    @GetMapping(value = "/all")
     public ResponseEntity<Page<CollaboratorDTO>> findAll(Pageable pageable) {
         Page<CollaboratorDTO> results = collaboratorService.findAll(pageable);
         return ResponseEntity.ok(results);
     }
 
-    @GetMapping(value = "/collaborators-by-name")
+    @GetMapping(value = "/by-name")
     public ResponseEntity<Page<CollaboratorDTO>> findCollaboratorByName(Pageable pageable, @RequestParam(defaultValue = "") String name) {
         Page<CollaboratorDTO> results = collaboratorService.findCollaboratorByName(pageable, name);
         return ResponseEntity.ok(results);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        collaboratorService.deleteById(id);
+    }
 }
+

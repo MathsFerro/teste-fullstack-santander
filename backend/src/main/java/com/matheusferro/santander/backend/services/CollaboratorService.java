@@ -12,5 +12,6 @@ public interface CollaboratorService {
     Page<CollaboratorDTO> findCollaboratorByName(Pageable pageable, String name);
     Page<CollaboratorDTO> findAll(Pageable pageable);
     CollaboratorDTO findById(Long id);
+    void deleteById(Long id);
 
 }

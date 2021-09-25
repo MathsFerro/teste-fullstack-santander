@@ -58,4 +58,9 @@ public class CollaboratorServiceImpl implements CollaboratorService {
         Collaborator collaborator = collaboratorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return new CollaboratorDTO(collaborator);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        collaboratorRepository.deleteById(id);
+    }
 }

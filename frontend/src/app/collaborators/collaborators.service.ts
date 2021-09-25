@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class CollaboratorsService {
 
-  devUrl="http://localhost:8080/api";
+  devUrl="http://localhost:8080/api/collaborator";
 
   constructor(
     private http: HttpClient
   ) { }
 
   add(collaborator: Collaborator): Observable<Collaborator> {
-    return this.http.post<Collaborator>(this.devUrl+"/collaborator", collaborator);
+    return this.http.post<Collaborator>(this.devUrl, collaborator);
   }
 
   findAll(pageable: PageableData): Observable<CollaboratorData> {
@@ -23,7 +23,7 @@ export class CollaboratorsService {
       'page': pageable.pageNumber
     });
 
-    return this.http.get<CollaboratorData>(this.devUrl+"/collaborators", { params });
+    return this.http.get<CollaboratorData>(this.devUrl+"/all", { params });
   }
 
   findCollaboratorByName(pageable: PageableData, name: string): Observable<CollaboratorData> {
@@ -32,7 +32,20 @@ export class CollaboratorsService {
       'page': pageable.pageNumber,
       'name': name
     });
-    return this.http.get<CollaboratorData>(this.devUrl+"/collaborators-by-name", { params });
+
+    return this.http.get<CollaboratorData>(this.devUrl+"/by-name", { params });
+  }
+
+  edit(id: number): Observable<Collaborator> {
+    return this.http.get<Collaborator>(this.devUrl+`/${id}`);
+  }
+
+  findById(id: number): Observable<Collaborator> {
+    return this.http.get<Collaborator>(this.devUrl+`/${id}`);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete<any>(this.devUrl+`/${id}`);
   }
 }
 

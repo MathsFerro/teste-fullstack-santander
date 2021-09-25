@@ -10,6 +10,7 @@ import { Collaborator, CollaboratorData, CollaboratorsService, PageableData } fr
 export class CollaboratorsListComponent implements OnInit {
 
   collaboratorData: CollaboratorData;
+  collaboratorSelected: Collaborator;
   pageable: PageableData;
   filterName: string = "";
   selectedPageSize: number = 2;
@@ -33,10 +34,28 @@ export class CollaboratorsListComponent implements OnInit {
 
     this.collaboratorsService.findAll(this.pageable).subscribe(resp => {
       this.collaboratorData = resp;
+      console.log(this.collaboratorData);
     }, error => {
       this.toastr.error("Falha ao buscar colaboradores", "Erro!");
       console.log(error);
     });
+  }
+
+  prepareToDelete(collaborator: Collaborator) {
+    this.collaboratorSelected = collaborator;
+  }
+
+  deleteById() {
+    if(!this.collaboratorSelected)
+      return;
+
+    this.collaboratorsService.deleteById(this.collaboratorSelected.id).subscribe(resp => {
+      this.toastr.success("Colaborador deletado!", "Sucesso");
+      this.findAll();
+    }, error => {
+      this.toastr.error("Erro ao deletar", "Error");
+      console.log(error);
+    })
   }
 
   findCollaboratorByName() {

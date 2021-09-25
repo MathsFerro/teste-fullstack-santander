@@ -21,6 +21,7 @@
       <th scope="col">Cargo</th>
       <th scope="col">Data Nascimento</th>
       <th scope="col">Endereço</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody *ngIf="collaboratorData">
@@ -31,13 +32,23 @@
       <td>{{collaborator.role}}</td>
       <td>{{collaborator.birthDate}}</td>
       <td>{{collaborator.address.logradouro}}, {{collaborator.address.number}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="prepareToDelete(collaborator)" data-toggle="modal" data-target="#modalDelete">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 
 </table>
 
 <div class="d-flex justify-content-between container-grid">
-  <select class="form-select" (change)="findAll()" [(ngModel)]="selectedPageSize" class="page-link container-select">
+  <select 
+    class="form-select" 
+    (change)="findAll()" 
+    [(ngModel)]="selectedPageSize" 
+    class="page-link container-select"
+  >
     <option value="1">1</option>
     <option value="2" selected>2</option>
     <option value="3">3</option>
@@ -69,4 +80,22 @@
 
 </div>
 
+<div id="modalDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Confirmação</h4>
+      </div>
+    
+      <div class="modal-body" *ngIf="collaboratorSelected">
+        Confirma a deleção do colaborador(a) {{ collaboratorSelected.name }}?
+      </div>
 
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="deleteById()" data-dismiss="modal">Confirmar</button>
+        <button class="btn btn-info" data-dismiss="modal">Cancelar</button>
+      </div>
+    
+    </div>
+  </div>
+</div>

@@ -38,5 +38,4 @@ export class CollaboratorsFormComponent implements OnInit {
   goBack() {
     this.router.navigateByUrl("/")
   }
-
 }
