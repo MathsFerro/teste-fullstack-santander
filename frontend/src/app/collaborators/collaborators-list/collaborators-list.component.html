@@ -1,0 +1,72 @@
+<div class="flex-container">
+  <h1 class="mt-2">Colaboradores</h1>
+
+  <div class="form-group flex-inputs">
+    <input  
+      type="text" 
+      class="form-control mt-4"
+      [(ngModel)]="filterName"
+    >
+    <button class="mt-4 btn btn-primary " (click)="findCollaboratorByName()">Buscar</button>
+  </div>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Sobrenome</th>
+      <th scope="col">Cargo</th>
+      <th scope="col">Data Nascimento</th>
+      <th scope="col">Endereço</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="collaboratorData">
+    <tr *ngFor="let collaborator of collaboratorData.content">
+      <th scope="row">{{collaborator.id}}</th>
+      <td>{{collaborator.name}}</td>
+      <td>{{collaborator.lastName}}</td>
+      <td>{{collaborator.role}}</td>
+      <td>{{collaborator.birthDate}}</td>
+      <td>{{collaborator.address.logradouro}}, {{collaborator.address.number}}</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div class="d-flex justify-content-between container-grid">
+  <select class="form-select" (change)="findAll()" [(ngModel)]="selectedPageSize" class="page-link container-select">
+    <option value="1">1</option>
+    <option value="2" selected>2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" (click)="previousPage()" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link">{{pageable.pageNumber}}</a></li>
+      <li class="page-item">
+        <a class="page-link" (click)="nextPage()" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>    
+  </nav>
+  
+  <button class=" btn btn-success" routerLink="/collaborator">
+    Adicionar
+  </button>
+
+</div>
+
+

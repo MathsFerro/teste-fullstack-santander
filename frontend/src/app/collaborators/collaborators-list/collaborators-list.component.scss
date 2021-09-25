@@ -1,0 +1,22 @@
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .flex-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+}
+
+.container-grid {
+  display: flex;
+  align-items: center!important;
+}
+
+.container-select{
+  width: 58px;
+  height: 45px;
+}

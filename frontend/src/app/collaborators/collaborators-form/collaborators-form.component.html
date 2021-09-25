@@ -1,0 +1,151 @@
+
+<h1 class="mt-2">Novo colaborador</h1>
+<hr>
+<form (submit)="submitForm()">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Nome:</label>
+        <input 
+          type="text" 
+          class="form-control"
+          value="collaborator.name" 
+          name="collaborator.name" 
+          [(ngModel)]="collaborator.name"
+          required
+        >
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Sobrenome:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          value="collaborator.lastName" 
+          name="collaborator.lastName" 
+          [(ngModel)]="collaborator.lastName"
+          required
+        >
+      </div>
+      
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Data de nascimento:</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          value="collaborator.birthDate" 
+          name="collaborator.birthDate" 
+          [(ngModel)]="collaborator.birthDate"
+          required
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Cargo:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          value="collaborator.role" 
+          name="collaborator.role" 
+          [(ngModel)]="collaborator.role"
+        >
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Cidade:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          value="collaborator.address.city" 
+          name="collaborator.address.city" 
+          [(ngModel)]="collaborator.address.city"
+          required
+        >
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Estado:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          value="collaborator.address.state" 
+          name="collaborator.address.state" 
+          [(ngModel)]="collaborator.address.state"
+          required
+        >
+      </div>
+    </div>    
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Bairro:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          value="collaborator.address.district" 
+          name="collaborator.address.district" 
+          [(ngModel)]="collaborator.address.district"
+          required
+        >
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Logradouro:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          value="collaborator.address.logradouro" 
+          name="collaborator.address.logradouro" 
+          [(ngModel)]="collaborator.address.logradouro"
+          required
+        >
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Número:</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          value="collaborator.address.number" 
+          name="collaborator.address.number" 
+          [(ngModel)]="collaborator.address.number"
+          required
+        >
+      </div>
+    </div>   
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>CEP:</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          value="collaborator.address.cep" 
+          name="collaborator.address.cep" 
+          [(ngModel)]="collaborator.address.cep"
+          required
+        >
+      </div>
+    </div>  
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-success" >Salvar</button>
+    </div>
+    <div>
+      <button type="button" class="btn btn-info" (click)="goBack()">Voltar</button> 
+    </div>
+  </div>
+</form>
