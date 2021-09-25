@@ -7,10 +7,15 @@
   
 ```sh
  cd frontend
- npm install
- 
- npm start
- or
+ npm install 
+```
+
+Initialize frontend<br>
+```sh
+npm start
+```
+or
+```sh
  npm install -g @angular/cli
  ng serve --open
 ```
